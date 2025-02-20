@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package marketpulse;
+
+import "google/protobuf/timestamp.proto";
+option go_package = "github.com/chyngyz-sydykov/crypto-bot-protos/marketpulse;marketpulse";
+
+service MarketPulse {
+  
+  // Fetch OHLC (candlestick) data
+  rpc GetOHLC (OHLCRequest) returns (OHLCResponse);
+  
+  // Fetch calculated indicators
+  rpc GetIndicators (IndicatorRequest) returns (IndicatorResponse);
+}
+
+// Request for OHLC Data
+message OHLCRequest {
+  string currency = 1;             // e.g., "BTC"
+  string timeframe = 2;            // e.g., "1H", "4H", "1D"
+  google.protobuf.Timestamp start_time = 3; // Optional: Start time
+  google.protobuf.Timestamp end_time = 4;   // Optional: End time
+  int32 limit = 5;                 // Optional: Number of records (default 100)
+  string sort_order = 6;           // Optional: "ASC" or "DESC" (default "DESC")
+}
+
+// OHLC Data Response
+message OHLCResponse {
+  repeated OHLCData records = 1;
+}
+
+// OHLC Data Structure
+message OHLCData {
+  string currency = 1;
+  string timeframe = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  double open = 4;
+  double high = 5;
+  double low = 6;
+  double close = 7;
+  double volume = 8;
+  double trend = 9;
+}
+
+// Request for Indicator Data
+message IndicatorRequest {
+  string currency = 1;             // e.g., "BTC"
+  string timeframe = 2;            // e.g., "1H", "4H", "1D"
+  google.protobuf.Timestamp start_time = 3; // Optional: Start time
+  google.protobuf.Timestamp end_time = 4;   // Optional: End time
+  int32 limit = 5;                 // Optional: Number of records (default 100)
+  string sort_order = 6;           // Optional: "ASC" or "DESC" (default "DESC")
+}
+
+// Indicator Data Response
+message IndicatorResponse {
+  repeated IndicatorData indicators = 1;
+}
+
+// Indicator Data Structure
+message IndicatorData {
+  string currency = 1;
+  string timeframe = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  double sma = 4;
+  double ema = 5;
+  double std_dev = 6;
+  double lower_bollinger = 7;
+  double upper_bollinger = 8;
+  double rsi = 9;
+  double volatility = 10;
+  double macd = 11;
+  double macd_signal = 12;
+}

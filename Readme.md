@@ -1,0 +1,1 @@
+This .proto file will be shared between the MarketPulse and TradeSignal services, allowing each to use the definitions as needed.
