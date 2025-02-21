@@ -41,6 +41,7 @@ message OHLCData {
   double close = 7;
   double volume = 8;
   double trend = 9;
+  bool IsComplete = 10;
 }
 
 // Request for Indicator Data
