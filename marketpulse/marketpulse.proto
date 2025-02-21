@@ -21,7 +21,8 @@ message OHLCRequest {
   google.protobuf.Timestamp start_time = 3; // Optional: Start time
   google.protobuf.Timestamp end_time = 4;   // Optional: End time
   int32 limit = 5;                 // Optional: Number of records (default 100)
-  string sort_order = 6;           // Optional: "ASC" or "DESC" (default "DESC")
+  string sort_field = 6;           // Optional: (default "timestamp")
+  string sort_order = 7;           // Optional: "ASC" or "DESC" (default "DESC")
 }
 
 // OHLC Data Response
@@ -49,7 +50,8 @@ message IndicatorRequest {
   google.protobuf.Timestamp start_time = 3; // Optional: Start time
   google.protobuf.Timestamp end_time = 4;   // Optional: End time
   int32 limit = 5;                 // Optional: Number of records (default 100)
-  string sort_order = 6;           // Optional: "ASC" or "DESC" (default "DESC")
+  string sort_field = 6;           // Optional: (default "timestamp")
+  string sort_order = 7;          // Optional: "ASC" or "DESC" (default "DESC")
 }
 
 // Indicator Data Response
