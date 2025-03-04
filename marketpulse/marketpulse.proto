@@ -74,4 +74,5 @@ message IndicatorData {
   double volatility = 10;
   double macd = 11;
   double macd_signal = 12;
+  double tr = 13;
 }
